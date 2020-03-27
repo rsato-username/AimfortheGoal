@@ -13,11 +13,11 @@ public class Camera : MonoBehaviour
 		Vector3 target = new Vector3(playerPos.x, playerPos.y, -15);
 		float step = speed * Time.deltaTime;
 
-		if (playerPos.y < 8)
+		if (playerPos.y < 10)
 		{
 			transform.position = Vector3.MoveTowards(transform.position, target, step);
 		}
-		else if (playerPos.y > 8)
+		else if (playerPos.y > 10)
 		{
 			target = new Vector3(playerPos.x, playerPos.y, -20);
 			transform.position = Vector3.MoveTowards(transform.position, target, step);
