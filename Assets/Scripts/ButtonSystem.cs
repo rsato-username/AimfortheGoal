@@ -22,6 +22,11 @@ public class ButtonSystem : MonoBehaviour
 		SceneManager.LoadScene("Easy");
 	}
 
+	public void StartNormal()
+	{
+		SceneManager.LoadScene("Normal");
+	}
+
 	public void BackGame()
 	{
 		SceneManager.LoadScene("Start");
