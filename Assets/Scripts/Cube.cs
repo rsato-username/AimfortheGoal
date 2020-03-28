@@ -12,9 +12,8 @@ public class Cube : MonoBehaviour
 	{
 		Vector3 target = new Vector3(this.transform.position.x, -3, this.transform.position.z);
 		float step = speed * Time.deltaTime;
-		
 
-		if (count < 7)
+		if (count < 9)
 		{
 			if (flag)
 			{
