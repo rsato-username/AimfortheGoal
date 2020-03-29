@@ -38,6 +38,11 @@ public class ButtonSystem : MonoBehaviour
 		SceneManager.LoadScene("Normal");
 	}
 
+	public void StartHard()
+	{
+		SceneManager.LoadScene("Hard");
+	}
+
 	public void BackGame()
 	{
 		SceneManager.LoadScene("Start");
