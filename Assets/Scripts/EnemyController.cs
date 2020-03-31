@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
 	public NavMeshAgent Enemy;
-	public MeshRenderer mr;
 	public GameObject Player;
 	public bool player_operation;
 
