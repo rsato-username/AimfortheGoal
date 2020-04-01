@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slide : MonoBehaviour
+public class RevSlide : MonoBehaviour
 {
 	Rigidbody rb;
 	bool flag = true;
@@ -12,30 +12,30 @@ public class Slide : MonoBehaviour
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
-		target = this.transform.position.x + 9;
+		target = this.transform.position.x - 9;
 	}
 
 	void Update()
 	{
 		if (count < 7)
 		{
-			if (flag)
+			if (flag == false)
 			{
 				rb.velocity = new Vector3(1.5f, 0, 0);
 				if (this.transform.position.x > target)
 				{
-					flag = false;
+					flag = true;
 					target = this.transform.position.x - 9;
+					count++;
 				}
 			}
-			if (flag == false)
+			if (flag)
 			{
 				rb.velocity = new Vector3(-1.5f, 0, 0);
 				if (this.transform.position.x < target)
 				{
-					flag = true;
+					flag = false;
 					target = this.transform.position.x + 9;
-					count++;
 				}
 			}
 		}
@@ -44,4 +44,5 @@ public class Slide : MonoBehaviour
 			rb.velocity = new Vector3(0, 0, 0);
 		}
 	}
+	
 }

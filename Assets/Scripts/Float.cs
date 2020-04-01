@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slide : MonoBehaviour
+public class Float : MonoBehaviour
 {
 	Rigidbody rb;
 	bool flag = true;
-	private int count = 0;
+	public int count = 0;
 	private float target;
 
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
-		target = this.transform.position.x + 9;
+		target = this.transform.position.y - 9;
 	}
 
 	void Update()
@@ -21,20 +21,20 @@ public class Slide : MonoBehaviour
 		{
 			if (flag)
 			{
-				rb.velocity = new Vector3(1.5f, 0, 0);
-				if (this.transform.position.x > target)
+				rb.velocity = new Vector3(0, -1.5f, 0);
+				if (this.transform.position.y < target)
 				{
 					flag = false;
-					target = this.transform.position.x - 9;
+					target = this.transform.position.y + 9;
 				}
 			}
 			if (flag == false)
 			{
-				rb.velocity = new Vector3(-1.5f, 0, 0);
-				if (this.transform.position.x < target)
+				rb.velocity = new Vector3(0, 1.5f, 0);
+				if (this.transform.position.y > target)
 				{
 					flag = true;
-					target = this.transform.position.x + 9;
+					target = this.transform.position.y - 9;
 					count++;
 				}
 			}

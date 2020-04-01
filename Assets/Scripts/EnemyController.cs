@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-	public NavMeshAgent Enemy;
+	NavMeshAgent Enemy;
 	public GameObject Player;
 	public bool player_operation;
 
