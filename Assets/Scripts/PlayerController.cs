@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
 	public bool timer_operation = true;
 	public GameObject Timer;
 	public Rigidbody rb;
+	AudioSource audioSource;
+	public AudioClip jumpAudio;
+	public AudioClip goalAudio;
+	public AudioClip gameoverAudio;
 
 	public GameObject goal_text;
 	public GameObject gameover;
@@ -21,6 +25,7 @@ public class PlayerController : MonoBehaviour
 		this.is_landing = true;
 		this.operation = true;
 		rb = this.GetComponent<Rigidbody>();
+		audioSource = this.GetComponent<AudioSource>();
 	}
 
 	void FixedUpdate()
@@ -36,6 +41,7 @@ public class PlayerController : MonoBehaviour
 			{
 				if (Input.GetKeyDown(KeyCode.Space))
 				{
+					audioSource.PlayOneShot(jumpAudio);
 					this.is_landing = false;
 					this.rb.AddForce(transform.up * jumpPower);
 				}
@@ -67,12 +73,14 @@ public class PlayerController : MonoBehaviour
 		}
 		if (collision.gameObject.tag == "Goal")
 		{
+			audioSource.PlayOneShot(goalAudio);
 			goal_text.SetActive(true);
 			panel.SetActive(true);
 			this.operation = false;
 		}
 		if (collision.gameObject.tag == "Gameover")
 		{
+			audioSource.PlayOneShot(gameoverAudio);
 			gameover.SetActive(true);
 			panel.SetActive(true);
 			this.operation = false;

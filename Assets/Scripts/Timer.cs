@@ -10,8 +10,11 @@ public class Timer : MonoBehaviour
 	[SerializeField] public GameObject Player;
 	private float oldSeconds; // 前のUpdateの時の秒数
 	public Text timerText; // タイマー表示用テキスト
+	AudioSource audioSource;
+	bool flag = true;
 
 	public GameObject gameover;
+	public GameObject panel;
 	public bool operation;
 	public bool player_operation;
 
@@ -24,6 +27,7 @@ public class Timer : MonoBehaviour
 		timerText = GetComponentInChildren<Text>();
 		operation = true;
 		player_operation = Player.GetComponent<PlayerController>().operation;
+		audioSource = this.GetComponent<AudioSource>();
 	}
  
 	void Update ()
@@ -49,8 +53,14 @@ public class Timer : MonoBehaviour
 		}
 		if (timerText.text == "00:00")
 		{
+			if (flag)
+			{
+				audioSource.PlayOneShot(audioSource.clip);
+				flag = false;
+			}
 			operation = false;
 			gameover.SetActive(true);
+			panel.SetActive(true);
 		}
 	}
 }
