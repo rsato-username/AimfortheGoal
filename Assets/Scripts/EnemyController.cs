@@ -17,10 +17,9 @@ public class EnemyController : MonoBehaviour
 	void Update()
 	{
 		player_operation = Player.GetComponent<PlayerController>().operation;
+		// プレイヤー停止でエネミー停止
 		if (player_operation)
-		{
 			Enemy.destination = Player.transform.position;
-		}
 		else
 			Enemy.destination = this.transform.position;
 	}

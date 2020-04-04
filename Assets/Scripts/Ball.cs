@@ -17,16 +17,10 @@ public class Ball : MonoBehaviour
 	void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.tag == "Stage")
-		{
 			Destroy(this.gameObject);
-		}
 		if (collision.gameObject.tag == "Goal")
-		{
 			Destroy(this.gameObject);
-		}
 		if (collision.gameObject.tag == "Gameover")
-		{
 			Destroy(this.gameObject);
-		}
 	}
 }

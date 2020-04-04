@@ -17,9 +17,10 @@ public class Slide : MonoBehaviour
 
 	void Update()
 	{
+		// 7往復で運動停止
 		if (count < 7)
 		{
-			if (flag)
+			if (flag) // 右にスライド
 			{
 				rb.velocity = new Vector3(1.5f, 0, 0);
 				if (this.transform.position.x > target)
@@ -28,7 +29,7 @@ public class Slide : MonoBehaviour
 					target = this.transform.position.x - 9;
 				}
 			}
-			if (flag == false)
+			if (flag == false) // 左にスライド
 			{
 				rb.velocity = new Vector3(-1.5f, 0, 0);
 				if (this.transform.position.x < target)

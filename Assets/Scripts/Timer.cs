@@ -5,19 +5,17 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-	[SerializeField] private int minute;
-	[SerializeField] private float seconds;
-	[SerializeField] public GameObject Player;
+	private int minute;
+	private float seconds;
 	private float oldSeconds; // 前のUpdateの時の秒数
 	public Text timerText; // タイマー表示用テキスト
-	AudioSource audioSource;
-	bool flag = true;
-
+	public GameObject Player;
 	public GameObject gameover;
 	public GameObject panel;
-	public bool operation;
-	public bool player_operation;
-
+	public bool operation; // タイマーの操作権限
+	public bool player_operation; // プレイヤーの操作権限
+	AudioSource audioSource; // ゲームオーバーのSE
+	private bool flag = true;
  
 	void Start ()
 	{
@@ -33,26 +31,26 @@ public class Timer : MonoBehaviour
 	void Update ()
 	{
 		player_operation = Player.GetComponent<PlayerController>().operation;
+		// プレイヤー停止でタイマー停止
 		if (player_operation == false)
-		{
 			operation = false;
-		}
 		if (this.operation)
 		{
 			seconds -= Time.deltaTime;
-			if (seconds <= 00)
+			if (seconds <= 0)
 			{
 				minute--;
 				seconds = seconds + 60;
 			}
+			// タイマー更新
 			if ((int)seconds != (int)oldSeconds)
-			{
 				timerText.text = minute.ToString("00") + ":" + ((int) seconds).ToString("00");
-			}
 			oldSeconds = seconds;
 		}
+		// タイムアップ時
 		if (timerText.text == "00:00")
 		{
+			// 一度だけSE
 			if (flag)
 			{
 				audioSource.PlayOneShot(audioSource.clip);

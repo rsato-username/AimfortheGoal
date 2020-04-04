@@ -17,9 +17,10 @@ public class Float : MonoBehaviour
 
 	void Update()
 	{
+		// 7往復で運動停止
 		if (count < 7)
 		{
-			if (flag)
+			if (flag) // 下降
 			{
 				rb.velocity = new Vector3(0, -1.5f, 0);
 				if (this.transform.position.y < target)
@@ -28,7 +29,7 @@ public class Float : MonoBehaviour
 					target = this.transform.position.y + 9;
 				}
 			}
-			if (flag == false)
+			if (flag == false) // 上昇
 			{
 				rb.velocity = new Vector3(0, 1.5f, 0);
 				if (this.transform.position.y > target)
@@ -40,8 +41,6 @@ public class Float : MonoBehaviour
 			}
 		}
 		if (count == 7)
-		{
 			rb.velocity = new Vector3(0, 0, 0);
-		}
 	}
 }

@@ -6,16 +6,15 @@ public class PlayerController : MonoBehaviour
 {
 	private float jumpPower = 600;
 	private float speed = 4;
-	public bool is_landing = true;
-	public bool operation = true;
-	public bool timer_operation = true;
+	public bool is_landing = true; // 二段ジャンプ防止
+	public bool operation = true; // プレイヤーの操作権限
+	public bool timer_operation = true; // タイマーの操作権限
 	public GameObject Timer;
 	public Rigidbody rb;
 	AudioSource audioSource;
-	public AudioClip jumpAudio;
-	public AudioClip goalAudio;
-	public AudioClip gameoverAudio;
-
+	public AudioClip jumpAudio; // ジャンプのSE
+	public AudioClip goalAudio; // ゴールのSE
+	public AudioClip gameoverAudio; // ゲームオーバーのSE
 	public GameObject goal_text;
 	public GameObject gameover;
 	public GameObject panel;
@@ -31,10 +30,9 @@ public class PlayerController : MonoBehaviour
 	void FixedUpdate()
 	{
 		timer_operation = Timer.GetComponent<Timer>().operation;
+		// タイムアップでプレイヤー停止
 		if (timer_operation == false)
-		{
 			operation = false;
-		}
 		if (this.operation)
 		{
 			if (this.is_landing)
@@ -68,9 +66,7 @@ public class PlayerController : MonoBehaviour
 	void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.tag == "Stage")
-		{
 			this.is_landing = true;
-		}
 		if (collision.gameObject.tag == "Goal")
 		{
 			audioSource.PlayOneShot(goalAudio);

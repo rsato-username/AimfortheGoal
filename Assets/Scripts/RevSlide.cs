@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RevSlide : MonoBehaviour
 {
+	// Slide.csの逆の動きをする
 	Rigidbody rb;
 	bool flag = true;
 	private int count = 0;

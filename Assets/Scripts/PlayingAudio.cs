@@ -16,6 +16,7 @@ public class PlayingAudio : MonoBehaviour
 	void Update()
 	{
 		operation = player.GetComponent<PlayerController>().operation;
+		// プレイヤー停止でBGMフェードアウト
 		if (operation == false)
 		{
 			asource.volume -= Time.deltaTime / 2;
